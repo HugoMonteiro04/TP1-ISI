@@ -6,6 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -458,7 +459,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>C:/TP1-ISI/TP1-ISI/ISI/data/Input/CsvInputFromAPI.csv</filename>
+    <filename>${Internal.Transformation.Filename.Directory}/data/Input/CsvInputFromAPI.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -612,7 +613,7 @@
             <value>
               <name>constant</name>
               <type>String</type>
-              <text>United States</text>
+              <text>Portugal</text>
               <length>-1</length>
               <precision>-1</precision>
               <isnull>N</isnull>
