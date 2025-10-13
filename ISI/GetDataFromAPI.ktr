@@ -454,11 +454,21 @@
     </hop>
     <hop>
       <from>location</from>
+      <to>Country/Region</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Country/Region</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
       <to>XmlOutputFromAPI</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>location</from>
+      <from>If field value is null</from>
       <to>CsvInputFromAPI</to>
       <enabled>Y</enabled>
     </hop>
@@ -488,7 +498,7 @@
     <fileNameField/>
     <create_parent_folder>N</create_parent_folder>
     <file>
-      <name>C:/ISI/data/Input/CsvInputFromAPI</name>
+      <name>C:/TP1-ISI/TP1-ISI/ISI/data/Input/CsvInputFromAPI</name>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>N</do_not_open_new_file_init>
       <extention>csv</extention>
@@ -566,7 +576,19 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>location</name>
+        <name>country</name>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>none</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>region</name>
         <type>String</type>
         <format>#</format>
         <currency/>
@@ -611,8 +633,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>176</yloc>
+      <xloc>992</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -910,7 +932,7 @@
     <xml_main_element>Rows</xml_main_element>
     <xml_repeat_element>Row</xml_repeat_element>
     <file>
-      <name>C:/ISI/data/OutPut/XmlOutputFromAPI</name>
+      <name>C:/TP1-ISI/TP1-ISI/ISI/data/OutPut/XmlOutputFromAPI</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
@@ -968,8 +990,8 @@
         <content_type>Element</content_type>
         <name>avg_Rating</name>
         <element/>
-        <type>String</type>
-        <format>#</format>
+        <type>Number</type>
+        <format>0.00</format>
         <currency/>
         <decimal/>
         <group/>
@@ -992,7 +1014,20 @@
       </field>
       <field>
         <content_type>Element</content_type>
-        <name>location</name>
+        <name>country</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>region</name>
         <element/>
         <type>String</type>
         <format>#</format>
@@ -1039,7 +1074,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>992</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1120,7 +1155,7 @@
         <in_stream_name>num_Reviews</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
-        <replace_string/>
+        <replace_string>ratings</replace_string>
         <replace_by_string/>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
@@ -1132,8 +1167,8 @@
         <in_stream_name>location</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
-        <replace_string>\n</replace_string>
-        <replace_by_string> </replace_by_string>
+        <replace_string>\n|\r</replace_string>
+        <replace_by_string/>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -1152,6 +1187,18 @@
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>location</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>·</replace_string>
+        <replace_by_string>--</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1163,6 +1210,166 @@
     </remotesteps>
     <GUI>
       <xloc>576</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Country/Region</name>
+    <type>FieldSplitter</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <splitfield>location</splitfield>
+    <delimiter>--</delimiter>
+    <enclosure/>
+    <fields>
+      <field>
+        <name>country</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+      </field>
+      <field>
+        <name>region</name>
+        <id/>
+        <idrem>N</idrem>
+        <type>String</type>
+        <format/>
+        <group/>
+        <decimal/>
+        <currency/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif/>
+        <ifnull/>
+        <trimtype>both</trimtype>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>If field value is null</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>URL</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>category</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>response</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>wineID</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>name</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>winery</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>avg_Rating</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>num_Reviews</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>country</name>
+        <value>Unknown</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>region</name>
+        <value>Unknown</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>image_URL</name>
+        <value/>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>832</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
