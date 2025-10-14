@@ -447,6 +447,26 @@
       <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>XmlOutputBackup</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>XmlFinalDataInput</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Select values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>XlsFinalDataOutput</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>CsvInputFromAPI</name>
@@ -520,7 +540,7 @@
       </field>
       <field>
         <name>num_Reviews</name>
-        <type>Number</type>
+        <type>Integer</type>
         <format>#.#</format>
         <currency>€</currency>
         <decimal>.</decimal>
@@ -584,7 +604,7 @@
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>368</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -626,17 +646,17 @@
             <conditions>
               <condition>
                 <negated>N</negated>
-                <leftvalue>avg_Rating</leftvalue>
+                <leftvalue>num_Reviews</leftvalue>
                 <function>&gt;</function>
                 <rightvalue/>
                 <value>
                   <name>constant</name>
-                  <type>Number</type>
-                  <text>4.7</text>
+                  <type>Integer</type>
+                  <text>300</text>
                   <length>-1</length>
-                  <precision>-1</precision>
+                  <precision>0</precision>
                   <isnull>N</isnull>
-                  <mask>####0.0#########;-####0.0#########</mask>
+                  <mask>#</mask>
                 </value>
               </condition>
               <condition>
@@ -657,6 +677,22 @@
               </condition>
             </conditions>
           </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>region</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Douro</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
         </conditions>
       </condition>
     </compare>
@@ -670,7 +706,7 @@
     </remotesteps>
     <GUI>
       <xloc>368</xloc>
-      <yloc>368</yloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -678,7 +714,7 @@
     <name>Sort rows</name>
     <type>SortRows</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
     <partitioning>
@@ -694,7 +730,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>avg_Rating</name>
+        <name>num_Reviews</name>
         <ascending>N</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -712,7 +748,477 @@
     </remotesteps>
     <GUI>
       <xloc>528</xloc>
-      <yloc>368</yloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>XmlOutputBackup</name>
+    <type>XMLOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <encoding>UTF-8</encoding>
+    <name_space/>
+    <xml_main_element>Rows</xml_main_element>
+    <xml_repeat_element>Row</xml_repeat_element>
+    <file>
+      <name>C:/TP1-ISI/ISI/data/OutPut/XmlOutputBackup</name>
+      <extention>xml</extention>
+      <servlet_output>N</servlet_output>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <omit_null_values>N</omit_null_values>
+      <date_time_format/>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <zipped>N</zipped>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <content_type>Element</content_type>
+        <name>wineID</name>
+        <element/>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>name</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>98</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>winery</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>46</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>avg_Rating</name>
+        <element/>
+        <type>Number</type>
+        <format>#,##0.###</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>num_Reviews</name>
+        <element/>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>country</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>13</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>region</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>52</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>image_URL</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>67</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>category</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>9</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>XmlFinalDataInput</name>
+    <type>XMLOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <encoding>UTF-8</encoding>
+    <name_space/>
+    <xml_main_element>Rows</xml_main_element>
+    <xml_repeat_element>Row</xml_repeat_element>
+    <file>
+      <name>C:/TP1-ISI/ISI/data/Input/XmlFinalDataInput</name>
+      <extention>xml</extention>
+      <servlet_output>N</servlet_output>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <omit_null_values>N</omit_null_values>
+      <date_time_format/>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <zipped>N</zipped>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <content_type>Element</content_type>
+        <name>wineID</name>
+        <element/>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>name</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>98</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>winery</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>46</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>avg_Rating</name>
+        <element/>
+        <type>Number</type>
+        <format>#,##0.###</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>num_Reviews</name>
+        <element/>
+        <type>Integer</type>
+        <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>country</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>13</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>region</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>52</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>image_URL</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>67</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>category</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>9</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>image_URL</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>XlsFinalDataOutput</name>
+    <type>ExcelOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <header>Y</header>
+    <footer>N</footer>
+    <encoding/>
+    <append>N</append>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name>C:/TP1-ISI/ISI/data/OutPut/XlsFinalDataOutput</name>
+      <extention>xls</extention>
+      <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <create_parent_folder>N</create_parent_folder>
+      <split>N</split>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <sheetname>Sheet1</sheetname>
+      <autosizecolums>N</autosizecolums>
+      <nullisblank>N</nullisblank>
+      <protect_sheet>N</protect_sheet>
+      <password>Encrypted </password>
+      <splitevery>0</splitevery>
+      <usetempfiles>N</usetempfiles>
+      <tempdirectory/>
+    </file>
+    <template>
+      <enabled>N</enabled>
+      <append>N</append>
+      <filename>template.xls</filename>
+    </template>
+    <fields>
+      <field>
+        <name>wineID</name>
+        <type>Integer</type>
+        <format>0</format>
+      </field>
+      <field>
+        <name>name</name>
+        <type>String</type>
+        <format>#</format>
+      </field>
+      <field>
+        <name>winery</name>
+        <type>String</type>
+        <format>#</format>
+      </field>
+      <field>
+        <name>avg_Rating</name>
+        <type>Number</type>
+        <format>####0.0#########;-####0.0#########</format>
+      </field>
+      <field>
+        <name>num_Reviews</name>
+        <type>Integer</type>
+        <format>0</format>
+      </field>
+      <field>
+        <name>country</name>
+        <type>String</type>
+        <format>#</format>
+      </field>
+      <field>
+        <name>region</name>
+        <type>String</type>
+        <format>#</format>
+      </field>
+      <field>
+        <name>category</name>
+        <type>String</type>
+        <format>#</format>
+      </field>
+    </fields>
+    <custom>
+      <header_font_name>arial</header_font_name>
+      <header_font_size>10</header_font_size>
+      <header_font_bold>N</header_font_bold>
+      <header_font_italic>N</header_font_italic>
+      <header_font_underline>no</header_font_underline>
+      <header_font_orientation>horizontal</header_font_orientation>
+      <header_font_color>black</header_font_color>
+      <header_background_color>none</header_background_color>
+      <header_row_height>255</header_row_height>
+      <header_alignment>left</header_alignment>
+      <header_image/>
+      <row_font_name>arial</row_font_name>
+      <row_font_size>10</row_font_size>
+      <row_font_color>black</row_font_color>
+      <row_background_color>none</row_background_color>
+    </custom>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
