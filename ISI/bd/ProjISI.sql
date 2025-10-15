@@ -1,84 +1,84 @@
 use ProjISI
 
 create table transformation_logs(
-ID_BATCH int NOT NULL,
-CHANNEL_ID int NOT NULL,
-TRANSNAME varchar(255) NOT NULL,
-[STATUS] varchar(255) NOT NULL,
-LINES_READ bigint NOT NULL,
-LINES_WRITTEN bigint NOT NULL,
-LINES_UPDATED bigint NOT NULL,
-LINES_INPUT bigint NOT NULL,
-LINES_OUTPUT bigint NOT NULL,
-LINES_REJECTED bigint NOT NULL,
-ERRORS bigint NOT NULL,
-STARTDATE datetime NOT NULL,
-ENDDATE datetime NOT NULL,
-LOGDATE datetime NOT NULL,
-DEPDATE datetime NOT NULL,
-REPLAYDATE datetime NOT NULL,
-LOG_FIELD varchar(255) NOT NULL
+ID_BATCH int ,
+CHANNEL_ID varchar(255),
+TRANSNAME varchar(255) ,
+[STATUS] varchar(255) ,
+LINES_READ varchar(255),
+LINES_WRITTEN varchar(255),
+LINES_UPDATED varchar(255),
+LINES_INPUT varchar(255),
+LINES_OUTPUT varchar(255),
+LINES_REJECTED varchar(255),
+ERRORS varchar(255),
+STARTDATE datetime ,
+ENDDATE datetime,
+LOGDATE datetime ,
+DEPDATE datetime ,
+REPLAYDATE datetime ,
+LOG_FIELD varchar(max)
 );
 
 create table STEP_logs(
-ID_BATCH int NOT NULL,
-CHANNEL_ID int NOT NULL,
-LOG_DATE datetime NOT NULL,
-TRANSNAME varchar(255) NOT NULL,
-STEPNAME varchar(255) NOT NULL,
-STEP_COPY bigint NOT NULL,
-LINES_READ bigint NOT NULL,
-LINES_WRITTEN bigint NOT NULL,
-LINES_UPDATED bigint NOT NULL,
-LINES_INPUT bigint NOT NULL,
-LINES_OUTPUT bigint NOT NULL,
-LINES_REJECTED bigint NOT NULL,
-ERRORS bigint NOT NULL
+ID_BATCH int ,
+CHANNEL_ID varchar(255),
+LOG_DATE datetime ,
+TRANSNAME varchar(255) ,
+STEPNAME varchar(255) ,
+STEP_COPY varchar(255),
+LINES_READ varchar(255),
+LINES_WRITTEN varchar(255),
+LINES_UPDATED varchar(255),
+LINES_INPUT varchar(255),
+LINES_OUTPUT varchar(255),
+LINES_REJECTED varchar(255),
+ERRORS varchar(255)
 );
 
 create table Performance_logs(
-ID_BATCH int NOT NULL,
-SEQ_NR bigint NOT NULL,
-LOGDATE datetime NOT NULL,
-TRANSNAME varchar(255) NOT NULL,
-STEPNAME varchar(255) NOT NULL,
-STEP_COPY bigint NOT NULL,
-LINES_READ bigint NOT NULL,
-LINES_WRITTEN bigint NOT NULL,
-LINES_UPDATED bigint NOT NULL,
-LINES_INPUT bigint NOT NULL,
-LINES_OUTPUT bigint NOT NULL,
-LINES_REJECTED bigint NOT NULL,
-ERRORS bigint NOT NULL,
-INPUT_BUFFER_ROWS bigint NOT NULL,
-OUTPUT_BUFFER_ROWS bigint NOT NULL
+ID_BATCH int ,
+SEQ_NR varchar(255),
+LOGDATE datetime ,
+TRANSNAME varchar(255) ,
+STEPNAME varchar(255),
+STEP_COPY varchar(255),
+LINES_READ varchar(255),
+LINES_WRITTEN varchar(255),
+LINES_UPDATED varchar(255),
+LINES_INPUT varchar(255),
+LINES_OUTPUT varchar(255),
+LINES_REJECTED varchar(255),
+ERRORS varchar(255),
+INPUT_BUFFER_ROWS varchar(255),
+OUTPUT_BUFFER_ROWS varchar(255)
 );
 
 create table LoggingChannel_logs(
-ID_BATCH int NOT NULL,
-CHANNEL_ID int NOT NULL,
-LOG_DATE datetime NOT NULL,
-LOGGING_OBJECT_TYPE	varchar(255) NOT NULL,
-[OBJECT_NAME] varchar(255) NOT NULL,
-OBJECT_COPY	varchar(255) NOT NULL,
-REPOSITORY_DIRECTORY varchar(255) NOT NULL,
-[FILENAME] varchar(255) NOT NULL,
-[OBJECT_ID] int NOT NULL,
-OBJECT_REVISION	varchar(255) NOT NULL,
-PARENT_CHANNEL_ID int NOT NULL,
-ROOT_CHANNEL_ID	int NOT NULL
+ID_BATCH int,
+CHANNEL_ID varchar(255),
+LOG_DATE datetime,
+LOGGING_OBJECT_TYPE	varchar(255),
+[OBJECT_NAME] varchar(255),
+OBJECT_COPY	varchar(255),
+REPOSITORY_DIRECTORY varchar(255),
+[FILENAME] varchar(255),
+[OBJECT_ID] varchar(255),
+OBJECT_REVISION	varchar(255),
+PARENT_CHANNEL_ID varchar(255),
+ROOT_CHANNEL_ID	varchar(255)
 );
 
 create table Metrics_logs(
 ID_BATCH int NOT NULL,
-CHANNEL_ID int NOT NULL,
-LOG_DATE datetime NOT NULL,
-METRICS_DATE datetime NOT NULL,
-METRICS_CODE varchar(255) NOT NULL,
-METRICS_DESCRIPTION	varchar(255) NOT NULL,
+CHANNEL_ID varchar(255),
+LOG_DATE datetime,
+METRICS_DATE datetime,
+METRICS_CODE varchar(255),
+METRICS_DESCRIPTION	varchar(255),
 METRICS_SUBJECT	varchar(255),
-METRICS_TYPE varchar(255) NOT NULL,
-METRICS_VALUE bigint NOT NULL
+METRICS_TYPE varchar(255),
+METRICS_VALUE varchar(255)
 );
 
 create table Utilizadores(
@@ -104,5 +104,4 @@ VALUES
 ('Sofia Nunes', 'sofia.nunes@email.com', '914726391', 'Italy', 'white', 0),
 ('Miguel Costa', 'miguel.costa@hotmail.com', '931847265', 'Spain', 'rose', 0),
 ('Hugo Monteiro', 'projisi@hotmail.com', '123456789', 'Italy', 'white', 1);
-
 
