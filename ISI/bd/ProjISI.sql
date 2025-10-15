@@ -104,4 +104,3 @@ VALUES
 ('Sofia Nunes', 'sofia.nunes@email.com', '914726391', 'Italy', 'white', 0),
 ('Miguel Costa', 'miguel.costa@hotmail.com', '931847265', 'Spain', 'rose', 0),
 ('Hugo Monteiro', 'projisi@hotmail.com', '123456789', 'Italy', 'white', 1);
-
