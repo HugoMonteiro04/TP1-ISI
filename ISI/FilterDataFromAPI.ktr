@@ -12,9 +12,9 @@
     </parameters>
     <log>
       <trans-log-table>
-        <connection/>
-        <schema/>
-        <table/>
+        <connection>ProjISI_logs</connection>
+        <schema>dbo</schema>
+        <table>Transformation_logs</table>
         <size_limit_lines/>
         <interval/>
         <timeout_days/>
@@ -126,9 +126,9 @@
         </field>
       </trans-log-table>
       <perf-log-table>
-        <connection/>
-        <schema/>
-        <table/>
+        <connection>ProjISI_logs</connection>
+        <schema>dbo</schema>
+        <table>Performance_logs</table>
         <interval/>
         <timeout_days/>
         <field>
@@ -208,9 +208,9 @@
         </field>
       </perf-log-table>
       <channel-log-table>
-        <connection/>
-        <schema/>
-        <table/>
+        <connection>ProjISI_logs</connection>
+        <schema>dbo</schema>
+        <table>LoggingChannel_logs</table>
         <timeout_days/>
         <field>
           <id>ID_BATCH</id>
@@ -274,9 +274,9 @@
         </field>
       </channel-log-table>
       <step-log-table>
-        <connection/>
-        <schema/>
-        <table/>
+        <connection>ProjISI_logs</connection>
+        <schema>dbo</schema>
+        <table>STEP_logs</table>
         <timeout_days/>
         <field>
           <id>ID_BATCH</id>
@@ -350,9 +350,9 @@
         </field>
       </step-log-table>
       <metrics-log-table>
-        <connection/>
-        <schema/>
-        <table/>
+        <connection>ProjISI_logs</connection>
+        <schema>dbo</schema>
+        <table>Metrics_logs</table>
         <timeout_days/>
         <field>
           <id>ID_BATCH</id>
@@ -436,6 +436,73 @@
   </info>
   <notepads>
   </notepads>
+  <connection>
+    <name>ProjISI_logs</name>
+    <server>127.0.0.1</server>
+    <type>MSSQLNATIVE</type>
+    <access>Native</access>
+    <database>ProjISI</database>
+    <port>1433</port>
+    <username>LogsISI</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce59edbbfd8f</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQLNATIVE.encrypt</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>EXTRA_OPTION_MSSQLNATIVE.trustServerCertificate</code>
+        <attribute>true</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQLUseIntegratedSecurity</code>
+        <attribute>false</attribute>
+      </attribute>
+      <attribute>
+        <code>MSSQL_DOUBLE_DECIMAL_SEPARATOR</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>1433</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
       <from>CsvInputFromAPI</from>
@@ -711,6 +778,37 @@
     </GUI>
   </step>
   <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>image_URL</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Sort rows</name>
     <type>SortRows</type>
     <description/>
@@ -753,8 +851,8 @@
     </GUI>
   </step>
   <step>
-    <name>XmlOutputBackup</name>
-    <type>XMLOutput</type>
+    <name>XlsFinalDataOutput</name>
+    <type>ExcelOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -763,144 +861,94 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <encoding>UTF-8</encoding>
-    <name_space/>
-    <xml_main_element>Rows</xml_main_element>
-    <xml_repeat_element>Row</xml_repeat_element>
+    <header>Y</header>
+    <footer>N</footer>
+    <encoding/>
+    <append>N</append>
+    <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>C:/TP1-ISI/ISI/data/OutPut/XmlOutputBackup</name>
-      <extention>xml</extention>
-      <servlet_output>N</servlet_output>
+      <name>C:/TP1-ISI/ISI/data/OutPut/XlsFinalDataOutput</name>
+      <extention>xls</extention>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
+      <create_parent_folder>N</create_parent_folder>
       <split>N</split>
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
-      <omit_null_values>N</omit_null_values>
       <date_time_format/>
-      <add_to_result_filenames>N</add_to_result_filenames>
-      <zipped>N</zipped>
+      <sheetname>Sheet1</sheetname>
+      <autosizecolums>N</autosizecolums>
+      <nullisblank>N</nullisblank>
+      <protect_sheet>N</protect_sheet>
+      <password>Encrypted </password>
       <splitevery>0</splitevery>
+      <usetempfiles>N</usetempfiles>
+      <tempdirectory/>
     </file>
+    <template>
+      <enabled>N</enabled>
+      <append>N</append>
+      <filename>template.xls</filename>
+    </template>
     <fields>
       <field>
-        <content_type>Element</content_type>
         <name>wineID</name>
-        <element/>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>15</length>
-        <precision>0</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>name</name>
-        <element/>
         <type>String</type>
         <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>98</length>
-        <precision>-1</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>winery</name>
-        <element/>
         <type>String</type>
         <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>46</length>
-        <precision>-1</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>avg_Rating</name>
-        <element/>
         <type>Number</type>
-        <format>#,##0.###</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>15</length>
-        <precision>0</precision>
+        <format>####0.0#########;-####0.0#########</format>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>num_Reviews</name>
-        <element/>
         <type>Integer</type>
         <format>0</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>15</length>
-        <precision>0</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>country</name>
-        <element/>
         <type>String</type>
         <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>13</length>
-        <precision>-1</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
         <name>region</name>
-        <element/>
         <type>String</type>
         <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>52</length>
-        <precision>-1</precision>
       </field>
       <field>
-        <content_type>Element</content_type>
-        <name>image_URL</name>
-        <element/>
-        <type>String</type>
-        <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>67</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <content_type>Element</content_type>
         <name>category</name>
-        <element/>
         <type>String</type>
         <format>#</format>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <length>9</length>
-        <precision>-1</precision>
       </field>
     </fields>
+    <custom>
+      <header_font_name>arial</header_font_name>
+      <header_font_size>10</header_font_size>
+      <header_font_bold>N</header_font_bold>
+      <header_font_italic>N</header_font_italic>
+      <header_font_underline>no</header_font_underline>
+      <header_font_orientation>horizontal</header_font_orientation>
+      <header_font_color>black</header_font_color>
+      <header_background_color>none</header_background_color>
+      <header_row_height>255</header_row_height>
+      <header_alignment>left</header_alignment>
+      <header_image/>
+      <row_font_name>arial</row_font_name>
+      <row_font_size>10</row_font_size>
+      <row_font_color>black</row_font_color>
+      <row_background_color>none</row_background_color>
+    </custom>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -911,7 +959,7 @@
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>128</yloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1079,8 +1127,8 @@
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
+    <name>XmlOutputBackup</name>
+    <type>XMLOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1089,125 +1137,144 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>image_URL</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>XlsFinalDataOutput</name>
-    <type>ExcelOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <header>Y</header>
-    <footer>N</footer>
-    <encoding/>
-    <append>N</append>
-    <add_to_result_filenames>Y</add_to_result_filenames>
+    <encoding>UTF-8</encoding>
+    <name_space/>
+    <xml_main_element>Rows</xml_main_element>
+    <xml_repeat_element>Row</xml_repeat_element>
     <file>
-      <name>C:/TP1-ISI/ISI/data/OutPut/XlsFinalDataOutput</name>
-      <extention>xls</extention>
+      <name>C:/TP1-ISI/ISI/data/OutPut/XmlOutputBackup</name>
+      <extention>xml</extention>
+      <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
-      <create_parent_folder>N</create_parent_folder>
       <split>N</split>
       <add_date>N</add_date>
       <add_time>N</add_time>
       <SpecifyFormat>N</SpecifyFormat>
+      <omit_null_values>N</omit_null_values>
       <date_time_format/>
-      <sheetname>Sheet1</sheetname>
-      <autosizecolums>N</autosizecolums>
-      <nullisblank>N</nullisblank>
-      <protect_sheet>N</protect_sheet>
-      <password>Encrypted </password>
+      <add_to_result_filenames>N</add_to_result_filenames>
+      <zipped>N</zipped>
       <splitevery>0</splitevery>
-      <usetempfiles>N</usetempfiles>
-      <tempdirectory/>
     </file>
-    <template>
-      <enabled>N</enabled>
-      <append>N</append>
-      <filename>template.xls</filename>
-    </template>
     <fields>
       <field>
+        <content_type>Element</content_type>
         <name>wineID</name>
+        <element/>
         <type>Integer</type>
         <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>name</name>
+        <element/>
         <type>String</type>
         <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>98</length>
+        <precision>-1</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>winery</name>
+        <element/>
         <type>String</type>
         <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>46</length>
+        <precision>-1</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>avg_Rating</name>
+        <element/>
         <type>Number</type>
-        <format>####0.0#########;-####0.0#########</format>
+        <format>#,##0.###</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>num_Reviews</name>
+        <element/>
         <type>Integer</type>
         <format>0</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>15</length>
+        <precision>0</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>country</name>
+        <element/>
         <type>String</type>
         <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>13</length>
+        <precision>-1</precision>
       </field>
       <field>
+        <content_type>Element</content_type>
         <name>region</name>
+        <element/>
         <type>String</type>
         <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>52</length>
+        <precision>-1</precision>
       </field>
       <field>
-        <name>category</name>
+        <content_type>Element</content_type>
+        <name>image_URL</name>
+        <element/>
         <type>String</type>
         <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>67</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <content_type>Element</content_type>
+        <name>category</name>
+        <element/>
+        <type>String</type>
+        <format>#</format>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <length>9</length>
+        <precision>-1</precision>
       </field>
     </fields>
-    <custom>
-      <header_font_name>arial</header_font_name>
-      <header_font_size>10</header_font_size>
-      <header_font_bold>N</header_font_bold>
-      <header_font_italic>N</header_font_italic>
-      <header_font_underline>no</header_font_underline>
-      <header_font_orientation>horizontal</header_font_orientation>
-      <header_font_color>black</header_font_color>
-      <header_background_color>none</header_background_color>
-      <header_row_height>255</header_row_height>
-      <header_alignment>left</header_alignment>
-      <header_image/>
-      <row_font_name>arial</row_font_name>
-      <row_font_size>10</row_font_size>
-      <row_font_color>black</row_font_color>
-      <row_background_color>none</row_background_color>
-    </custom>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1218,7 +1285,7 @@
     </remotesteps>
     <GUI>
       <xloc>704</xloc>
-      <yloc>336</yloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
