@@ -405,7 +405,7 @@
       <description/>
       <type>FILE_EXISTS</type>
       <attributes/>
-      <filename>${Internal.Job.Filename.Directory}/data/OutPut/HtmlFinalDataInput.html</filename>
+      <filename>${Internal.Job.Filename.Directory}/data/OutPut/HtmlFinalDataOutput.html</filename>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
@@ -419,7 +419,7 @@
       <type>XSLT</type>
       <attributes/>
       <xmlfilename>${Internal.Job.Filename.Directory}/data/Input/XmlFinalDataInput.xml</xmlfilename>
-      <xslfilename>C:\TP1-ISI\ISI\data\Input\XslFinalData.xsl</xslfilename>
+      <xslfilename>${Internal.Job.Filename.Directory}/data/Input/XslFinalData.xsl</xslfilename>
       <outputfilename>${Internal.Job.Filename.Directory}/data/Output/HtmlFinalDataOutput.html</outputfilename>
       <iffileexists>1</iffileexists>
       <addfiletoresult>N</addfiletoresult>

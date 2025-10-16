@@ -1,4 +1,4 @@
-wineID;name;winery;avg_Rating;num_Reviews;country;region;image_URL;category
+wineID;name;winery;avg_Rating;reviews;country;region;image_URL;category
 6;Ratsel Syrah N.V.;Sine Qua Non;4.90;68 ;United States;California;https://images.vivino.com/thumbs/ZzMKzqFqRO-6oI3ys3gGgQ_pb_x300.png;red
 19;Echion Cabernet Sauvignon 2014;Amici;4.90;43 ;United States;Oakville;https://images.vivino.com/thumbs/0667TG7qS2KsRLsShMTjAw_pb_x300.png;red
 27;Cabernet Sauvignon CCS Beckstoffer To Kalon Vineyard 2009;Schrader;4.90;39 ;United States;Oakville;https://images.vivino.com/thumbs/_jt3dPPrSZKfVmV6J8YlLg_pb_x300.png;red
