@@ -531,7 +531,7 @@
     </hop>
     <hop>
       <from>Select values</from>
-      <to>XlsFinalDataOutput</to>
+      <to>XlsFinalDataInput</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -851,7 +851,7 @@
     </GUI>
   </step>
   <step>
-    <name>XlsFinalDataOutput</name>
+    <name>XlsFinalDataInput</name>
     <type>ExcelOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -867,7 +867,7 @@
     <append>N</append>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/XlsFinalDataOutput</name>
+      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/XslFinalDataOuput</name>
       <extention>xls</extention>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
       <create_parent_folder>N</create_parent_folder>
