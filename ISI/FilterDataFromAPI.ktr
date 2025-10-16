@@ -606,7 +606,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <type>Integer</type>
         <format>#.#</format>
         <currency>€</currency>
@@ -713,7 +713,7 @@
             <conditions>
               <condition>
                 <negated>N</negated>
-                <leftvalue>num_Reviews</leftvalue>
+                <leftvalue>reviews</leftvalue>
                 <function>&gt;</function>
                 <rightvalue/>
                 <value>
@@ -828,7 +828,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <ascending>N</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -912,7 +912,7 @@
         <format>####0.0#########;-####0.0#########</format>
       </field>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <type>Integer</type>
         <format>0</format>
       </field>
@@ -1048,7 +1048,7 @@
       </field>
       <field>
         <content_type>Element</content_type>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <element/>
         <type>Integer</type>
         <format>0</format>
@@ -1211,7 +1211,7 @@
       </field>
       <field>
         <content_type>Element</content_type>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <element/>
         <type>Integer</type>
         <format>0</format>

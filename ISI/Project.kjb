@@ -419,7 +419,7 @@
       <type>XSLT</type>
       <attributes/>
       <xmlfilename>${Internal.Job.Filename.Directory}/data/Input/XmlFinalDataInput.xml</xmlfilename>
-      <xslfilename>${Internal.Job.Filename.Directory}/data/Input/</xslfilename>
+      <xslfilename>C:\TP1-ISI\ISI\data\Input\XslFinalData.xsl</xslfilename>
       <outputfilename>${Internal.Job.Filename.Directory}/data/Output/HtmlFinalDataOutput.html</outputfilename>
       <iffileexists>1</iffileexists>
       <addfiletoresult>N</addfiletoresult>

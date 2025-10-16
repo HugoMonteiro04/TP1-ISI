@@ -691,7 +691,7 @@
         <precision>-1</precision>
       </field>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <type>String</type>
         <format>#</format>
         <currency/>
@@ -849,7 +849,7 @@
         <repeat>N</repeat>
       </field>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <path>$[*].rating.reviews</path>
         <type>String</type>
         <format>#</format>
@@ -1028,7 +1028,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <value/>
         <mask/>
         <set_empty_string>N</set_empty_string>
@@ -1228,7 +1228,7 @@
       </field>
       <field>
         <content_type>Element</content_type>
-        <name>num_Reviews</name>
+        <name>reviews</name>
         <element/>
         <type>String</type>
         <format>#</format>
@@ -1379,7 +1379,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>num_Reviews</in_stream_name>
+        <in_stream_name>reviews</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>ratings</replace_string>
