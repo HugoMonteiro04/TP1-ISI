@@ -102,5 +102,5 @@ VALUES
 ('Tiago Monteiro', 'tiago.monteiro@gmail.com', '928374651', 'France', 0),
 ('Sofia Nunes', 'sofia.nunes@email.com', '914726391', 'Italy', 0),
 ('Miguel Costa', 'miguel.costa@hotmail.com', '931847265', 'Spain', 0),
-('Hugo Monteiro', 'projisi@hotmail.com', '123456789', 'Italy', 1);
+('Hugo Monteiro', 'hugo-_-monteiro@hotmail.com', '123456789', 'Italy', 1);
 

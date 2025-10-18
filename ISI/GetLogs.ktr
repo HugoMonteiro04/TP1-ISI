@@ -857,7 +857,7 @@
     <xml_main_element>Rows</xml_main_element>
     <xml_repeat_element>Row</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/Logs/LoggingChannel_logs</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/Logs/LoggingChannel_logs</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
@@ -1846,7 +1846,7 @@
     <xml_main_element>Performances</xml_main_element>
     <xml_repeat_element>Performance</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/Logs/Performance_logs</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/Logs/Performance_logs</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
@@ -2421,7 +2421,7 @@
     <xml_main_element>Steps</xml_main_element>
     <xml_repeat_element>Step</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/Logs/Step_logs</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/Logs/Step_logs</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
@@ -2636,7 +2636,7 @@
     <xml_main_element>Transformations</xml_main_element>
     <xml_repeat_element>Transformation</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/Logs/Transformation_logs</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/Logs/Transformation_logs</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>

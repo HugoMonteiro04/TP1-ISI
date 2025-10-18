@@ -867,7 +867,7 @@
     <append>N</append>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/XslFinalDataOuput</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/XslFinalDataOuput</name>
       <extention>xls</extention>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
       <create_parent_folder>N</create_parent_folder>
@@ -979,7 +979,7 @@
     <xml_main_element>Rows</xml_main_element>
     <xml_repeat_element>Row</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/Input/XmlFinalDataInput</name>
+      <name>${Internal.Entry.Current.Directory}/data/Input/XmlFinalDataInput</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
@@ -1142,7 +1142,7 @@
     <xml_main_element>Rows</xml_main_element>
     <xml_repeat_element>Row</xml_repeat_element>
     <file>
-      <name>${Internal.Transformation.Filename.Directory}/data/OutPut/XmlOutputBackup</name>
+      <name>${Internal.Entry.Current.Directory}/data/OutPut/XmlOutputBackup</name>
       <extention>xml</extention>
       <servlet_output>N</servlet_output>
       <do_not_open_newfile_init>N</do_not_open_newfile_init>
