@@ -564,7 +564,7 @@
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <type>CSV</type>
+      <type>Fixed</type>
       <compression>None</compression>
     </file>
     <filters>
@@ -651,7 +651,7 @@
         <aggregate>html</aggregate>
         <subject>html</subject>
         <type>CONCAT_STRING</type>
-        <valuefield>\n</valuefield>
+        <valuefield/>
       </field>
     </fields>
     <attributes/>

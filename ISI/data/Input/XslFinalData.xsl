@@ -2,11 +2,11 @@
     <xsl:template match="/">
         <html lang="pt-PT">
             <head>
-                <meta charset="utf-8"/>
+                <meta charset="UTF-8"/>
                 <style> body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333; } h2 { text-align: center; color: #444; margin-top: 20px; } table { width: 90%; margin: 20px auto; border-collapse: collapse; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); } th, td { padding: 12px; text-align: center; border: 1px solid #e0e0e0; } th { background-color: #0077b6; color: white; } tr:nth-child(even) { background-color: #f0f8ff; } tr:hover { background-color: #d7ecff; } img { width: 80px; height: 150px; border-radius: 5px; } </style>
             </head>
             <body>
-                <h2>Vinhos tintos da região do Douro com mais reviews</h2>
+                
                 <table>
                     <tr>
                         <th>Image</th>
